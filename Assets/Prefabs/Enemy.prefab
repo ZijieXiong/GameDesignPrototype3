@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6079038363896141091}
   - component: {fileID: 8474957814558024679}
   - component: {fileID: 3401130954512215464}
+  - component: {fileID: 3163226854327001095}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -123,7 +124,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.3
+  m_Radius: 0.5
 --- !u!114 &3401130954512215464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,5 +137,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb143a1a363443243a983b35201f1de7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  patrolPoints:
+  - {fileID: 7363537548046883672, guid: fccf9c4c67c917741aee54692baabf3f, type: 3}
+  - {fileID: 8069464843700455919, guid: 42f4b00a30aac5f458631589f6e2c1f3, type: 3}
+  - {fileID: 4143467859300692635, guid: f7b5e90cad07c744d98b4a3d02c68ef7, type: 3}
+  - {fileID: 8365260249510765839, guid: 66500ef6de4fb6b4197ba080f88dbf8c, type: 3}
+  patrolSpeed: 2
   chaseSpeed: 5
   detectionRange: 5
+--- !u!50 &3163226854327001095
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5368216626762609620}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
