@@ -9,6 +9,7 @@ TagManager:
   - WestExit
   - EastExit
   - SouthExit
+  - Enemy
   layers:
   - Default
   - TransparentFX
