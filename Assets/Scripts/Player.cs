@@ -47,6 +47,7 @@ public class Player : MonoBehaviour
         if (other.CompareTag("Key")) {
             keys++;
             Destroy(other.gameObject);
+            return;
         }
         foreach (var exitToScene in exitsToScenes)
         {   
