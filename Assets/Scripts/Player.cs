@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
 {
     if (collision.gameObject.CompareTag("Obstacles"))
     {
-        Debug.Log("Player has collided with an enemy!");
+        //Debug.Log("Player has collided with an enemy!");
     }
 }
 }
