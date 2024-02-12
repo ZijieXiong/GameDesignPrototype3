@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Obstacles
+  - NorthExit
+  - WestExit
+  - EastExit
+  - SouthExit
   layers:
   - Default
   - TransparentFX
