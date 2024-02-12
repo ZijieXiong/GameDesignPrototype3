@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     public ExitToScene[] exitsToScenes;
     private Rigidbody2D rb;
     private float keys;
+    public float keysNeeded;
     // Start is called before the first frame update
     
     void Start()
@@ -50,7 +51,7 @@ public class Player : MonoBehaviour
         foreach (var exitToScene in exitsToScenes)
         {   
             Debug.Log("comparing");
-            if (other.CompareTag(exitToScene.exitTag))
+            if (other.CompareTag(exitToScene.exitTag) && keys == keysNeeded)
             {
                 SceneManager.LoadScene(exitToScene.sceneName);
                 return;
