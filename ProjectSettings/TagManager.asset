@@ -11,6 +11,7 @@ TagManager:
   - SouthExit
   - Enemy
   - Key
+  - Gate
   layers:
   - Default
   - TransparentFX
