@@ -16,11 +16,13 @@ public class Player : MonoBehaviour
     public float speed = 5.0f;
     public ExitToScene[] exitsToScenes;
     private Rigidbody2D rb;
+    private float keys;
     // Start is called before the first frame update
     
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();    
+        rb = GetComponent<Rigidbody2D>();
+        keys = 0f;
     }
 
     // Update is called once per frame
@@ -41,13 +43,17 @@ public class Player : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-         foreach (var exitToScene in exitsToScenes)
-    {
-        if (other.CompareTag(exitToScene.exitTag))
-        {
-            SceneManager.LoadScene(exitToScene.sceneName);
-            return;
+        if (other.CompareTag("Key")) {
+            keys++;
+            Destroy(other.gameObject);
         }
-    }
+        foreach (var exitToScene in exitsToScenes)
+        {   
+            if (other.CompareTag(exitToScene.exitTag) && keys != 0)
+            {
+                SceneManager.LoadScene(exitToScene.sceneName);
+                return;
+            }
+        }
     }
 }
