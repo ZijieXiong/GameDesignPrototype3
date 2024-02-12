@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
         rb.MovePosition(newPosition);
     }
     
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Key")) {
             keys++;
@@ -49,7 +49,8 @@ public class Player : MonoBehaviour
         }
         foreach (var exitToScene in exitsToScenes)
         {   
-            if (other.CompareTag(exitToScene.exitTag) && keys != 0)
+            Debug.Log("comparing");
+            if (other.CompareTag(exitToScene.exitTag))
             {
                 SceneManager.LoadScene(exitToScene.sceneName);
                 return;
