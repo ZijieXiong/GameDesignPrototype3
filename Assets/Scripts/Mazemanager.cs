@@ -13,14 +13,13 @@ public class Mazemanager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        tilePositions = CalculateTilePositions(10, 18, tileSize);    
+        tilePositions = CalculateTilePositions(rows, columns, tileSize);    
     }
 
     // Update is called once per frame
     void Update()
     {
         
- 
     }
     public List<Vector2> CalculateTilePositions(int rows, int columns, float tileSize)
     {

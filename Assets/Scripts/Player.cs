@@ -1,10 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
+
+[System.Serializable]
+public class ExitToScene
+{
+    public string exitTag;
+    public string sceneName;
+}
+
 
 public class Player : MonoBehaviour
 {
     public float speed = 5.0f;
+    public ExitToScene[] exitsToScenes;
     private Rigidbody2D rb;
     // Start is called before the first frame update
     
@@ -29,11 +39,15 @@ public class Player : MonoBehaviour
         rb.MovePosition(newPosition);
     }
     
-    void OnCollisionEnter2D(Collision2D collision)
-{
-    if (collision.gameObject.CompareTag("Obstacles"))
+    private void OnTriggerEnter(Collider other)
     {
-        //Debug.Log("Player has collided with an enemy!");
+         foreach (var exitToScene in exitsToScenes)
+    {
+        if (other.CompareTag(exitToScene.exitTag))
+        {
+            SceneManager.LoadScene(exitToScene.sceneName);
+            return;
+        }
     }
-}
+    }
 }
