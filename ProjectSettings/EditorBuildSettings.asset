@@ -20,5 +20,29 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/1-Up Maze.unity
     guid: af14edac4ba248a478e1709c40607a48
+  - enabled: 1
+    path: Assets/Scenes/2-Left Maze.unity
+    guid: 08fe82b2a17c91c4589866929fb4e664
+  - enabled: 1
+    path: Assets/Scenes/2-Right Maze.unity
+    guid: b0589583fede909448345c86bc5fb339
+  - enabled: 1
+    path: Assets/Scenes/2-Start Maze.unity
+    guid: 2680d05e16f2fd04b882b60812ba72dd
+  - enabled: 1
+    path: Assets/Scenes/2-Up Maze.unity
+    guid: 8133599ad4d67684ea5c07fa8c1d35a1
+  - enabled: 1
+    path: Assets/Scenes/3-Left Maze.unity
+    guid: c175219d89eb92e4fab0d7514ab46d70
+  - enabled: 1
+    path: Assets/Scenes/3-Right Maze.unity
+    guid: d95606010867d734fa40914f36d301c1
+  - enabled: 1
+    path: Assets/Scenes/3-Start Maze.unity
+    guid: bf05408aea748dd46bc11bbe0d5a3987
+  - enabled: 1
+    path: Assets/Scenes/3-Up Maze.unity
+    guid: 6ef0df622234f8e4fbd60d3f81de72e1
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

@@ -27,9 +27,11 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         key = PlayerPrefs.GetInt("NumOfKey", 0);
+        Debug.Log(key);
         lastScene = PlayerPrefs.GetString("LastScene", "");
         currentScene = SceneManager.GetActiveScene().name;
         Debug.Log(lastScene);
+        Debug.Log(currentScene);
         if(lastScene != "" )
         {
             if(currentScene[0] != lastScene[0])
@@ -61,14 +63,14 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Key")) {
-            keys++;
+            key++;
             Destroy(other.gameObject);
             return;
         }
         foreach (var exitToScene in exitsToScenes)
         {   
             Debug.Log("comparing");
-            if (other.CompareTag(exitToScene.exitTag) && keys == keysNeeded)
+            if (other.CompareTag(exitToScene.exitTag))
             {
                 PlayerPrefs.SetInt("NumOfKey", key);
                 PlayerPrefs.SetString("LastScene", currentScene);
@@ -76,5 +78,17 @@ public class Player : MonoBehaviour
                 return;
             }
         }
+    }
+
+    private void clearPlayerPrefs()
+    {
+        PlayerPrefs.DeleteKey("NumOfKey");
+        PlayerPrefs.DeleteKey("LastScene");
+        PlayerPrefs.Save();
+    }
+
+    private void OnApplicationQuit()
+    {
+        clearPlayerPrefs();
     }
 }
