@@ -31,6 +31,12 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    public void RespawnEnemy()
+    {
+        Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+        GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
+    }
+
     private int GetRandomUnusedSpawnIndex(bool[] usedSpawnPoints)
     {
         // Find a random unused spawn point index
