@@ -47,5 +47,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/1-Start Maze.unity
     guid: 0bc72fe721d9d9f40a85551bb36a2f9d
+  - enabled: 1
+    path: Assets/Scenes/Losing.unity
+    guid: 81632d727bfca394fb504caad7501abc
+  - enabled: 1
+    path: Assets/Scenes/Winning.unity
+    guid: ed4dbdb2cf625c04790ea1af09712d57
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
