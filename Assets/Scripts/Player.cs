@@ -95,6 +95,10 @@ public class Player : MonoBehaviour
             audioSource.PlayOneShot(keyPickupSound);
             return;
         }
+        if(other.CompareTag("Enemy"))
+        {
+            SceneManager.LoadScene("Losing");
+        }
         foreach (var exitToScene in exitsToScenes)
         {   
             if (other.CompareTag(exitToScene.exitTag))
