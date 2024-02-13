@@ -6,21 +6,24 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public Transform[] patrolPoints;
-    public float patrolSpeed = 2f;
-    public float chaseSpeed = 5f;
-    public float detectionRange = 5f;
+    public float patrolSpeed = 1f;
+    public float chaseSpeed = 2f;
+    public float detectionRange = 3f;
 
-    public float despawnRange = 8f;
     public EnemySpawner roomSpawner;
 
     private Transform target;
     private int currentPatrolIndex = 0;
     private bool isChasing = false;
-    private bool sawPlayer = false;
+
+    public AudioClip detectionSound; // Assign your detection sound in the Unity Editor
+    private AudioSource audioSource;
+    private bool hasPlayedSound = false;
 
     private void Start()
     {
         target = patrolPoints[currentPatrolIndex];
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -32,6 +35,11 @@ public class Enemy : MonoBehaviour
         else
         {
             Patrol();
+        }
+
+        if (!hasPlayedSound && Vector3.Distance(transform.position, Player.instance.transform.position) < detectionRange)
+        {
+            PlayDetectionSound();
         }
     }
 
@@ -72,16 +80,15 @@ public class Enemy : MonoBehaviour
         if (Vector2.Distance(transform.position, player.transform.position) > detectionRange)
         {
             isChasing = false;
-            sawPlayer = true;
         }
     }
 
-    private void Despawn() {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (Vector2.Distance(transform.position, player.transform.position) > despawnRange && sawPlayer)
+    private void PlayDetectionSound()
+    {
+        if (detectionSound != null && audioSource != null)
         {
-            roomSpawner.RespawnEnemy();
-            Destroy(gameObject);
+            audioSource.PlayOneShot(detectionSound);
+            hasPlayedSound = true;
         }
     }
 }

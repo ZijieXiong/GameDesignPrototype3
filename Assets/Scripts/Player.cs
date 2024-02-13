@@ -21,7 +21,7 @@ public class SpawnPoint
 
 public class Player : MonoBehaviour
 {
-    public float speed = 5.0f;
+    public float speed = 3f;
     public ExitToScene[] exitsToScenes;
     public SpawnPoint[] spawnPoints;
     private Rigidbody2D rb;
@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
     public GameObject keyImage;
     public AudioClip keyPickupSound; // Assign your key pickup sound in the Unity Editor
     private AudioSource audioSource;
+    public static Player instance;
     // Start is called before the first frame update
     
     void Start()
@@ -125,5 +126,13 @@ public class Player : MonoBehaviour
     public int GetNumOfKeys()
     {
         return key;
+    }
+
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
     }
 }
