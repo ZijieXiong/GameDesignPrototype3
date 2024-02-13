@@ -11,11 +11,19 @@ public class ExitToScene
     public string sceneName;
 }
 
+[System.Serializable]
+public class SpawnPoint
+{
+    public string lastScene;
+    public Transform spawnPoint;
+}
+
 
 public class Player : MonoBehaviour
 {
     public float speed = 5.0f;
     public ExitToScene[] exitsToScenes;
+    public SpawnPoint[] spawnPoints;
     private Rigidbody2D rb;
     private int key;
     private string lastScene;
@@ -33,7 +41,10 @@ public class Player : MonoBehaviour
         currentScene = SceneManager.GetActiveScene().name;
         Debug.Log(lastScene);
         Debug.Log(currentScene);
-        keyImage.SetActive(false);
+        if(keyImage != null)
+        {
+            keyImage.SetActive(false);
+        }
         if(lastScene != "" )
         {
             if(currentScene[0] != lastScene[0])
@@ -43,6 +54,19 @@ public class Player : MonoBehaviour
                 PlayerPrefs.SetInt("NumOfKey", key);
             }
         }
+        //adjust player spawning position based on the last scene
+        if(spawnPoints != null)
+        {
+            foreach (var spawnPoint in spawnPoints)
+            {
+                if(lastScene == spawnPoint.lastScene)
+                {
+                    transform.position = spawnPoint.spawnPoint.position;
+                }
+            }
+        }
+
+        
     }
 
     // Update is called once per frame
