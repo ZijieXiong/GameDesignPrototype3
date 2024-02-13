@@ -17,12 +17,28 @@ public class Player : MonoBehaviour
     public ExitToScene[] exitsToScenes;
     private Rigidbody2D rb;
     private float keys;
+    private int key;
+    private string lastScene;
+    private string currentScene;
     public float keysNeeded;
     // Start is called before the first frame update
     
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        key = PlayerPrefs.GetInt("NumOfKey", 0);
+        lastScene = PlayerPrefs.GetString("LastScene", "");
+        currentScene = SceneManager.GetActiveScene().name;
+        Debug.Log(lastScene);
+        if(lastScene != "" )
+        {
+            if(currentScene[0] != lastScene[0])
+            {   
+                Debug.Log("Entering new level");
+                key = 0;
+                PlayerPrefs.SetInt("NumOfKey", key);
+            }
+        }
         keys = 0f;
     }
 
@@ -54,6 +70,8 @@ public class Player : MonoBehaviour
             Debug.Log("comparing");
             if (other.CompareTag(exitToScene.exitTag) && keys == keysNeeded)
             {
+                PlayerPrefs.SetInt("NumOfKey", key);
+                PlayerPrefs.SetString("LastScene", currentScene);
                 SceneManager.LoadScene(exitToScene.sceneName);
                 return;
             }
