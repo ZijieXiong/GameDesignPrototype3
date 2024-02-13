@@ -17,7 +17,6 @@ public class Player : MonoBehaviour
     public float speed = 5.0f;
     public ExitToScene[] exitsToScenes;
     private Rigidbody2D rb;
-    private float keys;
     private int key;
     private string lastScene;
     private string currentScene;
@@ -44,7 +43,6 @@ public class Player : MonoBehaviour
                 PlayerPrefs.SetInt("NumOfKey", key);
             }
         }
-        keys = 0f;
     }
 
     // Update is called once per frame
@@ -94,5 +92,10 @@ public class Player : MonoBehaviour
     private void OnApplicationQuit()
     {
         clearPlayerPrefs();
+    }
+
+    public int GetNumOfKeys()
+    {
+        return key;
     }
 }

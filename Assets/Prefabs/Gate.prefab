@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3805945166525354714}
   - component: {fileID: 4242427700824293824}
   - component: {fileID: 248188864348778947}
+  - component: {fileID: 2831484879267160626}
   m_Layer: 0
   m_Name: Gate
   m_TagString: Gate
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 4339919491774640481}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.53, y: -5.48, z: 0.030399725}
+  m_LocalPosition: {x: 0.53, y: -5.48, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -133,3 +134,16 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.8946276}
   m_EdgeRadius: 0
+--- !u!114 &2831484879267160626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4339919491774640481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14e16175b47c7da45aa754783b69fa92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openDoor: {fileID: 21300000, guid: dd1147e57e9c80f49b92509d015bfa6e, type: 3}
