@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/1-Left Maze.unity
     guid: 440158c7806af6a43a98a5558624e836
   - enabled: 1
-    path: Assets/Scenes/StartMaze.unity
+    path: Assets/Scenes/1-StartMaze.unity
     guid: c98c43aed66d6a44583bbe5328b156ac
   - enabled: 1
     path: Assets/Scenes/1-Right Maze.unity
