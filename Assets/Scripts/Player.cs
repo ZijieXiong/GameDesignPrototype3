@@ -21,7 +21,7 @@ public class SpawnPoint
 
 public class Player : MonoBehaviour
 {
-    public float speed = 5.0f;
+    public float speed = 3f;
     public ExitToScene[] exitsToScenes;
     public SpawnPoint[] spawnPoints;
     private Rigidbody2D rb;
