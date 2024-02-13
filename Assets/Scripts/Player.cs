@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
         currentScene = SceneManager.GetActiveScene().name;
         Debug.Log(lastScene);
         Debug.Log(currentScene);
+        keyImage.SetActive(false);
         if(lastScene != "" )
         {
             if(currentScene[0] != lastScene[0])
