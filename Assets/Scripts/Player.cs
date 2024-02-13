@@ -65,6 +65,7 @@ public class Player : MonoBehaviour
     {
         if (other.CompareTag("Key")) {
             key++;
+            PlayerPrefs.SetInt(currentScene+"KeyFound", 1);
             Destroy(other.gameObject);
             keyImage.SetActive(true);
             return;
@@ -84,8 +85,7 @@ public class Player : MonoBehaviour
 
     private void clearPlayerPrefs()
     {
-        PlayerPrefs.DeleteKey("NumOfKey");
-        PlayerPrefs.DeleteKey("LastScene");
+        PlayerPrefs.DeleteAll();
         PlayerPrefs.Save();
     }
 

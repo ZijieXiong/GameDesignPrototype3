@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class KeyScript : MonoBehaviour
 {
@@ -10,7 +11,15 @@ public class KeyScript : MonoBehaviour
 
     private void Start()
     {
-        SpawnKeys();
+        //Spawn key only if the player haven't found the key in this scene
+        string currentScene = SceneManager.GetActiveScene().name;
+        int keyFound = PlayerPrefs.GetInt(currentScene+"KeyFound", 0);
+        Debug.Log("keyFound:");
+        Debug.Log(keyFound);
+        if(keyFound<=0)
+        {
+            SpawnKeys();
+        }
     }
 
     private void SpawnKeys()
