@@ -21,7 +21,7 @@ public class KeyScript : MonoBehaviour
             int randomSpawnIndex = GetRandomUnusedSpawnIndex(usedSpawnPoints);
             usedSpawnPoints[randomSpawnIndex] = true; // Mark the spawn point as used
             Transform spawnPoint = spawnPoints[randomSpawnIndex];
-            GameObject key = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
+            GameObject key = Instantiate(keyPrefab, spawnPoint.position, Quaternion.identity);
         }
     }
 
