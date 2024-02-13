@@ -14,8 +14,6 @@ public class KeyScript : MonoBehaviour
         //Spawn key only if the player haven't found the key in this scene
         string currentScene = SceneManager.GetActiveScene().name;
         int keyFound = PlayerPrefs.GetInt(currentScene+"KeyFound", 0);
-        Debug.Log("keyFound:");
-        Debug.Log(keyFound);
         if(keyFound<=0)
         {
             SpawnKeys();

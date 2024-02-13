@@ -36,11 +36,8 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         key = PlayerPrefs.GetInt("NumOfKey", 0);
-        Debug.Log(key);
         lastScene = PlayerPrefs.GetString("LastScene", "");
         currentScene = SceneManager.GetActiveScene().name;
-        Debug.Log(lastScene);
-        Debug.Log(currentScene);
         if(keyImage != null)
         {
             keyImage.SetActive(false);
@@ -96,7 +93,6 @@ public class Player : MonoBehaviour
         }
         foreach (var exitToScene in exitsToScenes)
         {   
-            Debug.Log("comparing");
             if (other.CompareTag(exitToScene.exitTag))
             {
                 PlayerPrefs.SetInt("NumOfKey", key);

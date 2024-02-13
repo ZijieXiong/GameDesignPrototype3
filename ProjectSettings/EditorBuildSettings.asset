@@ -44,5 +44,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/3-Up Maze.unity
     guid: 6ef0df622234f8e4fbd60d3f81de72e1
+  - enabled: 1
+    path: Assets/Scenes/1-Start Maze.unity
+    guid: 0bc72fe721d9d9f40a85551bb36a2f9d
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
