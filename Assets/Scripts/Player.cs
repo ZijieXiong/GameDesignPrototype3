@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using UnityEngine;
 
 [System.Serializable]
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour
     private string lastScene;
     private string currentScene;
     public float keysNeeded;
+    public GameObject keyImage;
     // Start is called before the first frame update
     
     void Start()
@@ -65,6 +67,7 @@ public class Player : MonoBehaviour
         if (other.CompareTag("Key")) {
             key++;
             Destroy(other.gameObject);
+            keyImage.SetActive(true);
             return;
         }
         foreach (var exitToScene in exitsToScenes)
