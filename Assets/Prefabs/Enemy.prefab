@@ -146,6 +146,10 @@ MonoBehaviour:
   patrolSpeed: 2
   chaseSpeed: 1
   detectionRange: 5
+  maxVolumeDistance: 1
+  minVolumeDistance: 8
+  maxVolume: 1
+  minVolume: 0.1
   roomSpawner: {fileID: 0}
   detectionSound: {fileID: 8300000, guid: ec8f8be03a690c9479f6b138c0a026bc, type: 3}
 --- !u!50 &3163226854327001095
@@ -188,7 +192,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: ec8f8be03a690c9479f6b138c0a026bc, type: 3}
   m_Resource: {fileID: 8300000, guid: ec8f8be03a690c9479f6b138c0a026bc, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.7
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0

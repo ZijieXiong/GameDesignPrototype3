@@ -10,6 +10,11 @@ public class Enemy : MonoBehaviour
     public float chaseSpeed = 2f;
     public float detectionRange = 3f;
 
+    public float maxVolumeDistance = 5f;
+    public float minVolumeDistance = 20f;
+    public float maxVolume = 0.7f;
+    public float minVolume = 0.1f;
+
     public EnemySpawner roomSpawner;
 
     private Transform target;
@@ -40,6 +45,26 @@ public class Enemy : MonoBehaviour
         if (!hasPlayedSound && Vector3.Distance(transform.position, Player.instance.transform.position) < detectionRange)
         {
             PlayDetectionSound();
+        }
+
+        if(hasPlayedSound)
+        {
+            float distance = Vector3.Distance(Player.instance.transform.position, transform.position);
+            float volume;
+            if (distance <= maxVolumeDistance)
+            {
+                volume = maxVolume;
+            }
+            else if (distance >= minVolumeDistance)
+            {
+                volume = minVolume;
+            }
+            else
+            {
+                float t = (distance - maxVolumeDistance) / (minVolumeDistance - maxVolumeDistance);
+                volume = Mathf.Lerp(maxVolume, minVolume, t);
+            }
+            audioSource.volume = volume;
         }
     }
 
