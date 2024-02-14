@@ -96,9 +96,10 @@ public class Player : MonoBehaviour
             audioSource.PlayOneShot(keyPickupSound);
             return;
         }
-        if(other.CompareTag("Enemy"))
+        if(other.CompareTag("Treasure"))
         {
-
+            clearPlayerPrefs();
+            SceneManager.LoadScene("Winning");
         }
         foreach (var exitToScene in exitsToScenes)
         {   
@@ -117,6 +118,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("Player has collided with an enemy!");
+            clearPlayerPrefs();
             SceneManager.LoadScene("Losing");
         }
     }

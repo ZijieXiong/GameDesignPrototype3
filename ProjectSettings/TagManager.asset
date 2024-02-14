@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - Key
   - Gate
+  - Treasure
   layers:
   - Default
   - TransparentFX
