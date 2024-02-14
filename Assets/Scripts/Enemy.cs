@@ -99,3 +99,4 @@ public class Enemy : MonoBehaviour
         //Wait for 15 seconds
         yield return new WaitForSeconds(15);
     }
+}
