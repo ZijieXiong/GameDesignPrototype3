@@ -29,7 +29,6 @@ public class Player : MonoBehaviour
     private string lastScene;
     private string currentScene;
     public float keysNeeded;
-    public GameObject keyImage;
     public AudioClip keyPickupSound; // Assign your key pickup sound in the Unity Editor
     private AudioSource audioSource;
     public static Player instance;
@@ -42,10 +41,7 @@ public class Player : MonoBehaviour
         lastScene = PlayerPrefs.GetString("LastScene", "");
         currentScene = SceneManager.GetActiveScene().name;
         audioSource = GetComponent<AudioSource>();
-        if(keyImage != null)
-        {
-            keyImage.SetActive(false);
-        }
+
         if(lastScene != "" )
         {
             if(currentScene[0] != lastScene[0])
@@ -92,7 +88,6 @@ public class Player : MonoBehaviour
             key++;
             PlayerPrefs.SetInt(currentScene+"KeyFound", 1);
             Destroy(other.gameObject);
-            keyImage.SetActive(true);
             audioSource.PlayOneShot(keyPickupSound);
             return;
         }

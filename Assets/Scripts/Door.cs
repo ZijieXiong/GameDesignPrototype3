@@ -9,12 +9,16 @@ public class Door : MonoBehaviour
     private SpriteRenderer sprite;
 
     public Sprite openDoor;
+
+    public GameObject messageText; // Assign text in the Unity Editor
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Player>();
         boxCollider = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
+        messageText.SetActive(false);
     }
 
     // Update is called once per frame
@@ -28,6 +32,22 @@ public class Door : MonoBehaviour
         }
         else{
             boxCollider.isTrigger = false;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            messageText.SetActive(true);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            messageText.SetActive(false); // Hide the UI text when player exits the trigger zone
         }
     }
 }
