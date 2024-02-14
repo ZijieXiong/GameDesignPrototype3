@@ -8,11 +8,10 @@ public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemyPrefab;
     public Transform[] spawnPoints;
-    public int numberOfEnemies = 3;
+    public int numberOfEnemies = 1;
 
     private void Start()
     {
-        numberOfEnemies = SceneManager.GetActiveScene().name[0] - '0';
         SpawnEnemies();
     }
 
