@@ -4,26 +4,9 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine;
 
-[System.Serializable]
-public class ExitToScene
-{
-    public string exitTag;
-    public string sceneName;
-}
-
-[System.Serializable]
-public class SpawnPoint
-{
-    public string lastScene;
-    public Transform spawnPoint;
-}
-
-
 public class Player : MonoBehaviour
 {
     public float speed = 3f;
-    public ExitToScene[] exitsToScenes;
-    public SpawnPoint[] spawnPoints;
     private Rigidbody2D rb;
     private int key;
     private string lastScene;

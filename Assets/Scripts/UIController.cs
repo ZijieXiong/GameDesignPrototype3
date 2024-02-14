@@ -2,6 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class ExitToScene
+{
+    public string exitTag;
+    public string sceneName;
+}
+
+[System.Serializable]
+public class SpawnPoint
+{
+    public string lastScene;
+    public Transform spawnPoint;
+}
+
+
 public class UIController : MonoBehaviour
 {
     private GameObject canvas;
