@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
     public AudioClip keyPickupSound; // Assign your key pickup sound in the Unity Editor
     private AudioSource audioSource;
     public static Player instance;
-
+    private MazeController mazeController;
     private UIController uiControl;
 
     // Start is called before the first frame update
@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        mazeController = GameObject.Find("MazeController").GetComponent<MazeController>();
         key = PlayerPrefs.GetInt("NumOfKey", 0);
         lastScene = PlayerPrefs.GetString("LastScene", "");
         currentScene = SceneManager.GetActiveScene().name;
@@ -54,6 +55,13 @@ public class Player : MonoBehaviour
                 PlayerPrefs.SetInt("NumOfKey", key);
             }
         }
+        if(mazeController!=null)
+        {   
+            Debug.Log(mazeController.GetPlayerSpawnPosition(transform.position));
+            transform.position = mazeController.GetPlayerSpawnPosition(transform.position);
+        }
+        
+/*
         //adjust player spawning position based on the last scene
         if(spawnPoints != null)
         {
@@ -64,9 +72,10 @@ public class Player : MonoBehaviour
                     transform.position = spawnPoint.spawnPoint.position;
                 }
             }
-        }
+        }*/
 
         uiControl = GameObject.Find("UI Controller").GetComponent<UIController>();
+        Debug.Log(key);
         uiControl.UpdateLockUI(key);
 
         
@@ -104,15 +113,16 @@ public class Player : MonoBehaviour
             SceneManager.LoadScene("Winning");
             return;
         }
-        foreach (var exitToScene in exitsToScenes)
-        {   
-            if (other.CompareTag(exitToScene.exitTag))
+
+        if(other.CompareTag("SouthExit") | other.CompareTag("NorthExit") | other.CompareTag("EastExit") | other.CompareTag("WestExit"))
+        {   string newScene = mazeController.GetNextScene(other);
+            if(newScene != "")
             {
                 PlayerPrefs.SetInt("NumOfKey", key);
                 PlayerPrefs.SetString("LastScene", currentScene);
-                SceneManager.LoadScene(exitToScene.sceneName);
-                return;
+                SceneManager.LoadScene(newScene);
             }
+            return;
         }
     }
 
