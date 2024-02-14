@@ -10,6 +10,8 @@ public class Door : MonoBehaviour
 
     public Sprite openDoor;
 
+    public AudioClip doorSound;
+    private AudioSource audioSource;
     private GameObject messageText; // Assign text in the Unity Editor
 
     // Start is called before the first frame update
@@ -18,6 +20,7 @@ public class Door : MonoBehaviour
         player = GameObject.Find("Player").GetComponent<Player>();
         messageText = GameObject.Find("Canvas").transform.Find("DoorMessage").gameObject;
         boxCollider = GetComponent<BoxCollider2D>();
+        audioSource = GetComponent<AudioSource>();
         sprite = GetComponent<SpriteRenderer>();
         messageText.SetActive(false);
     }
@@ -34,6 +37,15 @@ public class Door : MonoBehaviour
         else{
             boxCollider.isTrigger = false;
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            audioSource.PlayOneShot(doorSound);
+        }
+
     }
 
     private void OnCollisionEnter2D(Collision2D other)

@@ -2,31 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class ExitToScene
-{
-    public string exitTag;
-    public string sceneName;
-}
-
-[System.Serializable]
-public class SpawnPoint
-{
-    public string lastScene;
-    public Transform spawnPoint;
-}
-
 
 public class UIController : MonoBehaviour
 {
     private GameObject canvas;
-    private Player player;
     public GameObject lockPrefab;
     // Start is called before the first frame update
-    void Start()
+
+    void Awake()
     {
         canvas = GameObject.Find("Canvas");
-        player = GameObject.Find("Player").GetComponent<Player>();
+        if (canvas == null)
+        {
+            Debug.LogError("Failed to find Canvas object.");
+        }
+        else
+        {
+            Debug.Log(canvas.transform);
+        }
+        if (lockPrefab == null)
+        {
+            Debug.LogError("Failed to find lockPrefab object.");
+        }
+    }
+
+    void Start()
+    {
+
     }
 
     // Update is called once per frame

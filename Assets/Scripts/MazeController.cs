@@ -3,6 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[System.Serializable]
+public class ExitToScene
+{
+    public string exitTag;
+    public string sceneName;
+}
+
+[System.Serializable]
+public class SpawnPoint
+{
+    public string lastScene;
+    public Transform spawnPoint;
+}
+
 public class MazeController : MonoBehaviour
 {
     public ExitToScene[] exitsToScenes;
@@ -25,7 +39,6 @@ public class MazeController : MonoBehaviour
     {
         Vector3 res = playerPosition;
         lastScene = PlayerPrefs.GetString("LastScene", "");
-        Debug.Log(lastScene);
         if(spawnPoints != null)
         {
             foreach (var spawnPoint in spawnPoints)

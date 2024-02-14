@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         mazeController = GameObject.Find("MazeController").GetComponent<MazeController>();
         key = PlayerPrefs.GetInt("NumOfKey", 0);
+        Debug.Log(key);
         lastScene = PlayerPrefs.GetString("LastScene", "");
         currentScene = SceneManager.GetActiveScene().name;
         audioSource = GetComponent<AudioSource>();
@@ -40,27 +41,11 @@ public class Player : MonoBehaviour
         }
         if(mazeController!=null)
         {   
-            Debug.Log(mazeController.GetPlayerSpawnPosition(transform.position));
             transform.position = mazeController.GetPlayerSpawnPosition(transform.position);
         }
-        
-/*
-        //adjust player spawning position based on the last scene
-        if(spawnPoints != null)
-        {
-            foreach (var spawnPoint in spawnPoints)
-            {
-                if(lastScene == spawnPoint.lastScene)
-                {
-                    transform.position = spawnPoint.spawnPoint.position;
-                }
-            }
-        }*/
 
         uiControl = GameObject.Find("UI Controller").GetComponent<UIController>();
-        Debug.Log(key);
         uiControl.UpdateLockUI(key);
-
         
     }
 
