@@ -98,7 +98,7 @@ public class Player : MonoBehaviour
         }
         if(other.CompareTag("Enemy"))
         {
-            SceneManager.LoadScene("Losing");
+
         }
         foreach (var exitToScene in exitsToScenes)
         {   
@@ -109,6 +109,15 @@ public class Player : MonoBehaviour
                 SceneManager.LoadScene(exitToScene.sceneName);
                 return;
             }
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("Player has collided with an enemy!");
+            SceneManager.LoadScene("Losing");
         }
     }
 
