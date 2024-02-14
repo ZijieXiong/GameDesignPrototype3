@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         lightBulb = GetComponentInChildren<Light2D>();
-        lightOuterRadius = PlayerPrefs.GetFloat("LightOuterRadius", 2f);
+        lightOuterRadius = PlayerPrefs.GetFloat("LightOuterRadius", 3.7f);
         Debug.Log(lightOuterRadius);
         lightBulb.pointLightOuterRadius = lightOuterRadius;
         mazeController = GameObject.Find("MazeController").GetComponent<MazeController>();
@@ -80,7 +80,7 @@ public class Player : MonoBehaviour
             Destroy(other.gameObject);
             audioSource.PlayOneShot(keyPickupSound);
             uiControl.UpdateLockUI(key);
-            lightOuterRadius += 0.2f;
+            lightOuterRadius -= 0.1f;
             lightBulb.pointLightOuterRadius = lightOuterRadius;
             return;
         }
