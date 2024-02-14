@@ -32,6 +32,9 @@ public class Player : MonoBehaviour
     public AudioClip keyPickupSound; // Assign your key pickup sound in the Unity Editor
     private AudioSource audioSource;
     public static Player instance;
+
+    private UIController uiControl;
+
     // Start is called before the first frame update
     
     void Start()
@@ -63,6 +66,9 @@ public class Player : MonoBehaviour
             }
         }
 
+        uiControl = GameObject.Find("UI Controller").GetComponent<UIController>();
+        uiControl.UpdateLockUI(key);
+
         
     }
 
@@ -89,12 +95,14 @@ public class Player : MonoBehaviour
             PlayerPrefs.SetInt(currentScene+"KeyFound", 1);
             Destroy(other.gameObject);
             audioSource.PlayOneShot(keyPickupSound);
+            uiControl.UpdateLockUI(key);
             return;
         }
         if(other.CompareTag("Treasure"))
         {
             clearPlayerPrefs();
             SceneManager.LoadScene("Winning");
+            return;
         }
         foreach (var exitToScene in exitsToScenes)
         {   
