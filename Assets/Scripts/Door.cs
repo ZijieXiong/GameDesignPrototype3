@@ -10,12 +10,13 @@ public class Door : MonoBehaviour
 
     public Sprite openDoor;
 
-    public GameObject messageText; // Assign text in the Unity Editor
+    private GameObject messageText; // Assign text in the Unity Editor
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Player>();
+        messageText = GameObject.Find("Canvas").transform.Find("DoorMessage").gameObject;
         boxCollider = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
         messageText.SetActive(false);
