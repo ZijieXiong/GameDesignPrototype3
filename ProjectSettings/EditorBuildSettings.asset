@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/1-Start Maze.unity
+    guid: c98c43aed66d6a44583bbe5328b156ac
+  - enabled: 1
     path: Assets/Scenes/1-Left Maze.unity
     guid: 440158c7806af6a43a98a5558624e836
   - enabled: 1
@@ -44,9 +47,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/3-Up Maze.unity
     guid: 6ef0df622234f8e4fbd60d3f81de72e1
-  - enabled: 1
-    path: Assets/Scenes/1-Start Maze.unity
-    guid: 0bc72fe721d9d9f40a85551bb36a2f9d
   - enabled: 1
     path: Assets/Scenes/Losing.unity
     guid: 81632d727bfca394fb504caad7501abc
