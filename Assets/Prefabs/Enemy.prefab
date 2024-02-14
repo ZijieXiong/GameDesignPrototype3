@@ -144,10 +144,10 @@ MonoBehaviour:
   - {fileID: 4143467859300692635, guid: f7b5e90cad07c744d98b4a3d02c68ef7, type: 3}
   - {fileID: 8365260249510765839, guid: 66500ef6de4fb6b4197ba080f88dbf8c, type: 3}
   patrolSpeed: 2
-  chaseSpeed: 1
+  chaseSpeed: 1.5
   detectionRange: 5
-  maxVolumeDistance: 1
-  minVolumeDistance: 8
+  maxVolumeDistance: 2
+  minVolumeDistance: 7
   maxVolume: 1
   minVolume: 0.1
   roomSpawner: {fileID: 0}

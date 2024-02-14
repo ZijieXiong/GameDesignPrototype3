@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Player : MonoBehaviour
 {
@@ -17,12 +18,18 @@ public class Player : MonoBehaviour
     public static Player instance;
     private MazeController mazeController;
     private UIController uiControl;
+    private Light2D lightBulb;
+    private float lightOuterRadius;
 
     // Start is called before the first frame update
     
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        lightBulb = GetComponentInChildren<Light2D>();
+        lightOuterRadius = PlayerPrefs.GetFloat("LightOuterRadius", 2f);
+        Debug.Log(lightOuterRadius);
+        lightBulb.pointLightOuterRadius = lightOuterRadius;
         mazeController = GameObject.Find("MazeController").GetComponent<MazeController>();
         key = PlayerPrefs.GetInt("NumOfKey", 0);
         Debug.Log(key);
@@ -73,6 +80,8 @@ public class Player : MonoBehaviour
             Destroy(other.gameObject);
             audioSource.PlayOneShot(keyPickupSound);
             uiControl.UpdateLockUI(key);
+            lightOuterRadius += 0.2f;
+            lightBulb.pointLightOuterRadius = lightOuterRadius;
             return;
         }
         if(other.CompareTag("Treasure"))
@@ -87,6 +96,7 @@ public class Player : MonoBehaviour
             if(newScene != "")
             {
                 PlayerPrefs.SetInt("NumOfKey", key);
+                PlayerPrefs.SetFloat("LightOuterRadius", lightOuterRadius);
                 PlayerPrefs.SetString("LastScene", currentScene);
                 SceneManager.LoadScene(newScene);
             }
