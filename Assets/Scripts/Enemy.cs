@@ -90,7 +90,6 @@ public class Enemy : MonoBehaviour
             audioSource.PlayOneShot(detectionSound);
             hasPlayedSound = true;
             StartCoroutine(waiter());
-            hasPlayedSound = false;
         }
     }
 
@@ -98,5 +97,6 @@ public class Enemy : MonoBehaviour
     {
         //Wait for 15 seconds
         yield return new WaitForSeconds(15);
+        hasPlayedSound = false;
     }
 }
