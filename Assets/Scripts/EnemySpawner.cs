@@ -8,15 +8,10 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyPrefab;
     public Transform[] spawnPoints;
     public int numberOfEnemies = 3;
-    public Text enemyCountText;
-
-    private int currentEnemyCount;
 
     private void Start()
     {
-        currentEnemyCount = numberOfEnemies;
         SpawnEnemies();
-        UpdateEnemyCountUI();
     }
 
     private void SpawnEnemies()
@@ -40,10 +35,5 @@ public class EnemySpawner : MonoBehaviour
             randomSpawnIndex = Random.Range(0, spawnPoints.Length);
         } while (usedSpawnPoints[randomSpawnIndex]); // Repeat until an unused spawn point is found
         return randomSpawnIndex;
-    }
-
-    private void UpdateEnemyCountUI()
-    {
-        enemyCountText.text = "ENEMIES: " + currentEnemyCount.ToString();
     }
 }

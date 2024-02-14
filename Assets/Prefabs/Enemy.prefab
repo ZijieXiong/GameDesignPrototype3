@@ -144,7 +144,7 @@ MonoBehaviour:
   - {fileID: 4143467859300692635, guid: f7b5e90cad07c744d98b4a3d02c68ef7, type: 3}
   - {fileID: 8365260249510765839, guid: 66500ef6de4fb6b4197ba080f88dbf8c, type: 3}
   patrolSpeed: 2
-  chaseSpeed: 5
+  chaseSpeed: 1
   detectionRange: 5
   roomSpawner: {fileID: 0}
   detectionSound: {fileID: 8300000, guid: ec8f8be03a690c9479f6b138c0a026bc, type: 3}
